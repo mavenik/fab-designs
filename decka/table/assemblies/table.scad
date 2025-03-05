@@ -12,21 +12,25 @@ module two_quarter_placement(width, length) {
   }
 }
 
-module table_top(width, length) {
+module quarter_frames(width, length) {
   translate([width/2,0,length/2]) {
     two_quarter_placement(width, length);
     mirror([0,0,1]) two_quarter_placement(width, length);
   }
 }
 
-module table(width, length, height) {
+module table_top(width, length, height) {
   translate([0, 0, height])
   rotate([-90,0,0])
   {
+    quarter_frames(width, length);
     translate([0,0,
     (length - stove_top_dimensions(width, length)[1]) / 2])
     stove_top_frame(stove_top_dimensions(width, length));
-    table_top(width, length);
   }
+
+}
+module table(width, length, height) {
+  table_top(width, length, height);
 }
 

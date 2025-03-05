@@ -70,11 +70,11 @@ module stove_top_frame(dimensions) {
   members = (length - 2*beading_thickness()) / top_member_width();
 
   for(i = [1: members]) {
-    translate([(i-1)*top_member_width()+beading_thickness(),
-               0, beading_thickness()]){
-//      top_member(
-//        width=top_member_width(),
-//        length=length - beading_thickness()*2);
+    translate([beading_thickness(),0,
+              i*top_member_width()+beading_thickness()]){
+      rotate([0,90,0]) top_member(
+        width=top_member_width(),
+        length=width - beading_thickness()*2);
     }
   }
 
