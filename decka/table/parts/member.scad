@@ -6,10 +6,7 @@ module top_member(width = 4.5, thickness = 1, length) {
   member(width, thickness, length);
 }
 
-module leg() {
-  width = 3.5;
-  thickness = 1.5;
-  length = 31;
+module leg(width=3.5, thickness=1.5, length=31) {
   member(width, thickness, length);
 }
 

@@ -98,6 +98,8 @@ module quarter_frames(width, length) {
 }
 
 module table_top(width, length, height) {
+
+  //echo(quarter_frame_dimensions(width, length));
   translate([0, 0, height])
   rotate([-90,0,0])
   {
