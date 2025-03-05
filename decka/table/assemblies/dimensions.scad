@@ -5,7 +5,7 @@ function top_member_width() = 4.5;
 
 function beading_thickness() = 1;
 
-function beading_width() = 2;
+function beading_width() = 3;
 
 function rounding_radius() = 1/4;
 
