@@ -103,9 +103,9 @@ module table_top(width, length, height) {
   translate([0, 0, height])
   rotate([-90,0,0])
   {
-    quarter_frames(width, length);
+    color("blue") quarter_frames(width, length);
     translate([0,0,
     (length - stove_top_dimensions(width, length)[1]) / 2])
-    stove_top_frame(stove_top_dimensions(width, length));
+    color("red") stove_top_frame(stove_top_dimensions(width, length));
   }
 }
