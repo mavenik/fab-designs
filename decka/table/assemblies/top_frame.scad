@@ -55,6 +55,7 @@ module quarter_frame(dimensions) {
                0, beading_thickness()]){
       top_member(
         width=top_member_width(),
+        thickness=member_thickness(),
         length=length - beading_thickness()*2);
     }
   }
@@ -74,6 +75,7 @@ module stove_top_frame(dimensions) {
               i*top_member_width()+beading_thickness()]){
       rotate([0,90,0]) top_member(
         width=top_member_width(),
+        thickness=member_thickness(),
         length=width - beading_thickness()*2);
     }
   }
@@ -100,7 +102,7 @@ module quarter_frames(width, length) {
 module table_top(width, length, height) {
 
   //echo(quarter_frame_dimensions(width, length));
-  translate([0, 0, height])
+  translate([0, 0, height+member_thickness()])
   rotate([-90,0,0])
   {
     color("blue") quarter_frames(width, length);

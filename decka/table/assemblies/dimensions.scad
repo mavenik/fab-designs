@@ -1,5 +1,6 @@
 // Top frame dimensions
 
+function member_thickness() = 1;
 function top_member_width() = 4.5;
 
 function beading_thickness() = 1;
@@ -15,7 +16,9 @@ function quarter_frame_dimensions(width, length) = [
                 (length - stove_top_dimensions(width, length)[1]) / 2
               ];
 
-// Legs
+// Stand dimensions
 
 function leg_width() = 3.5;
 function leg_thickness() = 1.5;
+
+function stand_margin() = 2;
