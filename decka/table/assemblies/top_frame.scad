@@ -41,12 +41,23 @@ module stove_top_border(width, length) {
 
 }
 
-module quarter_frame(dimensions) {
-  width = dimensions[0];
-  length = dimensions[1];
+module horizontal_members(width, length) {
+  // Members
+  members = (length - 2*beading_thickness()) / top_member_width();
 
-  quarter_frame_border(width, length);
+  for(i = [1: members]) {
+    translate([beading_thickness(),0,
+              i*top_member_width()+beading_thickness()]){
+      rotate([0,90,0]) top_member(
+        width=top_member_width(),
+        thickness=member_thickness(),
+        length=width - beading_thickness()*2);
+    }
+  }
 
+}
+
+module vertical_members(width, length) {
   // Members
   members = (width - 2*beading_thickness()) / top_member_width();
 
@@ -61,24 +72,20 @@ module quarter_frame(dimensions) {
   }
 }
 
+module quarter_frame(dimensions) {
+  width = dimensions[0];
+  length = dimensions[1];
+
+  quarter_frame_border(width, length);
+  horizontal_members(width, length);
+}
+
 module stove_top_frame(dimensions) {
   width = dimensions[0];
   length = dimensions[1];
 
   stove_top_border(width, length);
-
-  // Members
-  members = (length - 2*beading_thickness()) / top_member_width();
-
-  for(i = [1: members]) {
-    translate([beading_thickness(),0,
-              i*top_member_width()+beading_thickness()]){
-      rotate([0,90,0]) top_member(
-        width=top_member_width(),
-        thickness=member_thickness(),
-        length=width - beading_thickness()*2);
-    }
-  }
+  horizontal_members(width, length);
 }
 
 module quarter_frame_placement(width, length) {
@@ -101,7 +108,7 @@ module quarter_frames(width, length) {
 
 module table_top(width, length, height) {
 
-  //echo(quarter_frame_dimensions(width, length));
+  echo(quarter_frame_dimensions(width, length));
   translate([0, 0, height+member_thickness()])
   rotate([-90,0,0])
   {
